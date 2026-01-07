@@ -16,9 +16,8 @@ import { initPagination } from "./components/pagination.js";
 // Получаем API вместо прямых данных
 const api = initData(sourceData);
 
-/**
- * Сбор и обработка полей из таблицы
- */
+// Сбор и обработка полей из таблицы
+
 function collectState() {
     const state = processFormData(new FormData(sampleTable.container));
 
@@ -32,9 +31,7 @@ function collectState() {
     };
 }
 
-/**
- * Перерисовка таблицы (теперь асинхронная)
- */
+// Перерисовка таблицы (теперь асинхронная)
 async function render(action) {
     const state = collectState();
     let query = {}; // здесь будут формироваться параметры запроса
@@ -89,9 +86,7 @@ const applySearching = initSearching('search');
 // Фильтрация
 const { applyFiltering, updateIndexes } = initFiltering(sampleTable.filter.elements);
 
-/**
- * Асинхронная инициализация приложения
- */
+// Асинхронная инициализация приложения
 async function init() {
     const indexes = await api.getIndexes();
     updateIndexes(sampleTable.filter.elements, {
