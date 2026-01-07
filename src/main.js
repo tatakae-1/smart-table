@@ -57,7 +57,7 @@ const sampleTable = initTable({
     rowTemplate: 'row',
     before: ['search', 'header', 'filter'],
     after: ['pagination']
-}, render); // ← ИСПРАВЛЕНО: передаем render
+}, render); 
 
 // Инициализируем модули
 
