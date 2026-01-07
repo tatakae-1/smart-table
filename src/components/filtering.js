@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 export function initFiltering(elements) {
     const updateIndexes = (elements, indexes) => {
         Object.keys(indexes).forEach((elementName) => {
@@ -37,19 +36,5 @@ export function initFiltering(elements) {
     return {
         updateIndexes,
         applyFiltering
-=======
-import {createComparison, defaultRules} from "../lib/compare.js";
-
-// @todo: #4.3 — настроить компаратор
-
-export function initFiltering(elements, indexes) {
-    // @todo: #4.1 — заполнить выпадающие списки опциями
-
-    return (data, state, action) => {
-        // @todo: #4.2 — обработать очистку поля
-
-        // @todo: #4.5 — отфильтровать данные используя компаратор
-        return data;
->>>>>>> b9a72309d07abf8c952b4794bf01a814aa48e479
     }
 }

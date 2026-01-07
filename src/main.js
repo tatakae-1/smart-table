@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import './fonts/ys-display/fonts.css';
 import './style.css';
 
@@ -14,9 +13,12 @@ import { processFormData } from "./lib/utils.js";
 import { initTable } from "./components/table.js";
 import { initPagination } from "./components/pagination.js";
 
+// Получаем API вместо прямых данных
 const api = initData(sourceData);
 
-
+/**
+ * Сбор и обработка полей из таблицы
+ */
 function collectState() {
     const state = processFormData(new FormData(sampleTable.container));
 
@@ -30,10 +32,12 @@ function collectState() {
     };
 }
 
-
+/**
+ * Перерисовка таблицы (теперь асинхронная)
+ */
 async function render(action) {
     const state = collectState();
-    let query = {};
+    let query = {}; // здесь будут формироваться параметры запроса
 
     // Применяем все параметры к query
     query = applySearching(query, state, action);
@@ -56,7 +60,7 @@ const sampleTable = initTable({
     rowTemplate: 'row',
     before: ['search', 'header', 'filter'],
     after: ['pagination']
-}, render);
+}, render); // ← ИСПРАВЛЕНО: передаем render
 
 // Инициализируем модули
 
@@ -85,7 +89,9 @@ const applySearching = initSearching('search');
 // Фильтрация
 const { applyFiltering, updateIndexes } = initFiltering(sampleTable.filter.elements);
 
-// Асинхронная инициализация приложения
+/**
+ * Асинхронная инициализация приложения
+ */
 async function init() {
     const indexes = await api.getIndexes();
     updateIndexes(sampleTable.filter.elements, {
@@ -99,59 +105,3 @@ appRoot.appendChild(sampleTable.container);
 
 // Первая отрисовка через init()
 init().then(render);
-=======
-import './fonts/ys-display/fonts.css'
-import './style.css'
-
-import {data as sourceData} from "./data/dataset_1.js";
-
-import {initData} from "./data.js";
-import {processFormData} from "./lib/utils.js";
-
-import {initTable} from "./components/table.js";
-// @todo: подключение
-
-
-// Исходные данные используемые в render()
-const {data, ...indexes} = initData(sourceData);
-
-/**
- * Сбор и обработка полей из таблицы
- * @returns {Object}
- */
-function collectState() {
-    const state = processFormData(new FormData(sampleTable.container));
-
-    return {
-        ...state
-    };
-}
-
-/**
- * Перерисовка состояния таблицы при любых изменениях
- * @param {HTMLButtonElement?} action
- */
-function render(action) {
-    let state = collectState(); // состояние полей из таблицы
-    let result = [...data]; // копируем для последующего изменения
-    // @todo: использование
-
-
-    sampleTable.render(result)
-}
-
-const sampleTable = initTable({
-    tableTemplate: 'table',
-    rowTemplate: 'row',
-    before: [],
-    after: []
-}, render);
-
-// @todo: инициализация
-
-
-const appRoot = document.querySelector('#app');
-appRoot.appendChild(sampleTable.container);
-
-render();
->>>>>>> b9a72309d07abf8c952b4794bf01a814aa48e479

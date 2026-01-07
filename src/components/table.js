@@ -10,7 +10,6 @@ import {cloneTemplate} from "../lib/utils.js";
 export function initTable(settings, onAction) {
     const {tableTemplate, rowTemplate, before, after} = settings;
     const root = cloneTemplate(tableTemplate);
-<<<<<<< HEAD
     
 // Добавляем шаблоны "до" таблицы (в обратном порядке)
 before.reverse().forEach(subName => {
@@ -64,18 +63,6 @@ root.container.addEventListener('submit', (e) => {
 };
 
 
-=======
-
-    // @todo: #1.2 —  вывести дополнительные шаблоны до и после таблицы
-
-    // @todo: #1.3 —  обработать события и вызвать onAction()
-
-    const render = (data) => {
-        // @todo: #1.1 — преобразовать данные в массив строк на основе шаблона rowTemplate
-        const nextRows = [];
-        root.elements.rows.replaceChildren(...nextRows);
-    }
->>>>>>> b9a72309d07abf8c952b4794bf01a814aa48e479
 
     return {...root, render};
 }
